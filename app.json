@@ -1,8 +1,8 @@
 {
   "expo": {
     "name": "movies",
-    				"slug": "movies",
-    				"scheme":"movies",
+    "slug": "movies",
+    "scheme":"movies",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

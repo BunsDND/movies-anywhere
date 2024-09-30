@@ -1,4 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
+// import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, Button, ImageBackground } from 'react-native';
 import { useState } from 'react';
 
@@ -33,7 +33,7 @@ export default function App() {
           <View style={styles.buttonContainer}>
             <Button title="Sign - In "  color="#007BFF" />
           </View>
-          <StatusBar style="light" />
+          {/* <StatusBar style="light" /> */}
         </View>
       </View>
     </ImageBackground>

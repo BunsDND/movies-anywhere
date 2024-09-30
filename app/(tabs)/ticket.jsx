@@ -1,5 +1,6 @@
-import { View, Text } from 'react-native'
+import { View, Text,ScrollView } from 'react-native'
 import React from 'react'
+import ColorList from '../../components/ColorList'
 
 
 const Ticket = () => {
@@ -7,9 +8,9 @@ const Ticket = () => {
 
 
   return (
-    <View> 
-    <Text> Ticket</Text>
-   </View>
+    <ScrollView> 
+<ColorList color="#38216c"/>
+</ScrollView>
   )
 }
 

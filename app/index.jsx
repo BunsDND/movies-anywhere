@@ -1,6 +1,7 @@
-import { StatusBar } from 'expo-status-bar';
+
 import { StyleSheet, Text, View, ImageBackground, Image } from 'react-native';
 import { Link } from 'expo-router';
+import React from 'react'
 
 export default function App() {
   return (
@@ -19,7 +20,7 @@ export default function App() {
           </View>
         </View>
 
-        <StatusBar style="light" />
+        
       </View>
     </ImageBackground>
   );

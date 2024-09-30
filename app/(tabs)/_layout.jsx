@@ -1,91 +1,93 @@
-import { View, Text } from 'react-native'
+import { View, Image } from 'react-native'
 import React from 'react'
 import {Tabs, Redirect} from 'expo-router'
 import {icons} from '../../constants'
+import TabBar from '../../components/TabBar'
 
 
-const TabIcon = ({icon, color, name, focused}) => {
-  return(
-    <View> 
-      <Image  
-      source = {icon}
-      resizeMode = "contain"
-      style={{ width: 24, height: 24, tintColor: color}}
-      />
-
-    </View>
-  )
-}
+// const TabIcon = ({icon, color, name, focused}) => {
+//   return(
+//     <View> 
+//       <Image style={{width: 30}}
+//       source={icon}
+//       resizeMode="contain"
+//       classname="w-1 h-1"
+      
+//       />
+//     </View>
+//   )
+// }
 
 const TabLayout = () => {
-
-
-
   return (
     <>
-    <Tabs> 
+    <Tabs
+
+    tabBar={props=> <TabBar {...props}/>}
+    > 
 
       <Tabs.Screen
-        name='Home'
-        option={{
-          title: 'Home',
+        name='home'
+        options={{
           headerShown:false,
-          tabBarIcon:({})=>(
-              <TabIcon
-              icon =  {icons.home}
-              color = {color}
-              name = 'Home'
-              focused  = {focused}           
-              /> 
-          )
+          title: '',
+          // headerShown:false,
+          // tabBarIcon:({color,focused})=>(
+          //     <TabIcon
+          //     icon={icons.home}
+          //     color={color}
+          //     name='Home'
+          //     focused={focused}           
+          //     /> 
+          // )
         }}
       />
 
       <Tabs.Screen
-        name='Location'
-        option={{
-          title: 'Location',
+        name='location'
+        options={{
+          title: '',
           headerShown:false,
-          tabBarIcon:({})=>(
-              <TabIcon
-              icon =  {icons.location}
-              color = {color}
-              name = 'Location'
-              focused  = {focused}           
-              /> 
-          )
+          // tabBarIcon:({color,focused})=>(
+          //     <TabIcon
+          //     icon={icons.location}
+          //     color={color}
+          //     name='Location'
+          //     focused={focused}           
+          //     /> 
+          // )
         }}
       />
 
       <Tabs.Screen
-        name='Ticket'
-        option={{
-          title: 'Ticket',
+        name='ticket'
+        options={{
+          title: '',
           headerShown:false,
-          tabBarIcon:({})=>(
-              <TabIcon
-              icon =  {icons.ticket}
-              color = {color}
-              name = 'Ticket'
-              focused  = {focused}           
-              /> 
-          )
+          // tabBarIcon:({color,focused})=>(
+          //     <TabIcon
+          //     icon =  {icons.ticket}
+          //     color = {color}
+          //     name = 'Ticket'
+          //     focused  = {focused}           
+          //     /> 
+          // )
         }}
       />
 
       <Tabs.Screen
-        name='Profile'
-        option={{
-          title: 'Profile',
+        name='profile'
+        options={{
+          title: '',
           headerShown:false,
-          tabBarIcon:({})=>(
-              <TabIcon
-              icon =  {icons.profile}
-              color = {color}
-              name = 'Profile'
-              focused  = {focused}           
-              /> 
-          )
+          // tabBarIcon:({color,focused})=>(
+          //     <TabIcon
+          //     icon =  {icons.profile}
+          //     color = {color}
+          //     name = 'Profile'
+          //     focused  = {focused}           
+          //     /> 
+          // )
         }}
       />  
 
