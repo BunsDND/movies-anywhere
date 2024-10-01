@@ -2,14 +2,14 @@ import { View, Text } from "react-native";
 import React from "react";
 import { TouchableOpacity } from "react-native";
 import { StyleSheet } from "react-native";
-import Ionicons from 'react-native-vector-icons/Ionicons';  // Make sure to import Ionicons
+import Ionicons from 'react-native-vector-icons/Ionicons'; 
 
 const TabBar = ({ state, descriptors, navigation }) => {
   const primaryColor = "#624E88";
   const greyColor = "#737373";
-  const containerColor = "lightblue"; // Define the container color
+  const containerColor = "lightblue"; 
 
-  // Log the route names to see what they are
+
   console.log('Routes:', state.routes.map(route => route.name));
 
   const icons = {
@@ -98,11 +98,11 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     backgroundColor: "#4F75FF",
-    marginHorizontal: 10,
-    paddingVertical: 10,
+    // marginHorizontal: 10,
+    // paddingVertical: 10,
     borderTopRightRadius: 40,
     borderTopLeftRadius: 40,
-    borderCurve: "continuous",
+    // borderCurve: "continuous",
   },
   tabbarItem: {
     flex: 1,
@@ -116,14 +116,14 @@ const styles = StyleSheet.create({
   iconContainer: {
     width: 70,
     height: 70,
-    backgroundColor: "lightblue", // Background color for the container
+    backgroundColor: "lightblue", 
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 500, 
     shadowColor: '#171717',
     shadowOffset: {width: -2, height: 4},
     shadowOpacity: 0.2,
-    shadowRadius: 3,// Optional: If you want a rounded container
+    shadowRadius: 3,
   },
 });
 

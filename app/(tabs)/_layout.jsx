@@ -1,4 +1,4 @@
-import { View, Image } from 'react-native'
+import { View,StyleSheet, Image } from 'react-native'
 import React from 'react'
 import {Tabs, Redirect} from 'expo-router'
 import {icons} from '../../constants'
@@ -21,9 +21,9 @@ import TabBar from '../../components/TabBar'
 const TabLayout = () => {
   return (
     <>
-    <Tabs
+    <Tabs 
 
-    tabBar={props=> <TabBar {...props}/>}
+    tabBar={props=> <TabBar {...props} />}
     > 
 
       <Tabs.Screen
@@ -97,5 +97,9 @@ const TabLayout = () => {
     </>
   )
 }
-
+const styles = StyleSheet.create({
+  tab: {
+    backgroundColor: 'transparent',
+  }
+})
 export default TabLayout
