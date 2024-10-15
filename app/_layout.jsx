@@ -5,7 +5,7 @@ import { useFonts } from 'expo-font'
 import { useEffect } from 'react'
 
 
-SplashScreen.preventAutoHideAsync();
+// SplashScreen.preventAutoHideAsync();
 
 
 const MainLayout = () => {

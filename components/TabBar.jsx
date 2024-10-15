@@ -1,14 +1,13 @@
-import { View, Text } from "react-native";
+import { View, Text, ImageBackground } from "react-native"; // import ImageBackground
 import React from "react";
 import { TouchableOpacity } from "react-native";
 import { StyleSheet } from "react-native";
 import Ionicons from 'react-native-vector-icons/Ionicons'; 
 
 const TabBar = ({ state, descriptors, navigation }) => {
-  const primaryColor = "#624E88";
-  const greyColor = "#737373";
+  const primaryColor = "#262626";
+  const greyColor = "#262626";
   const containerColor = "lightblue"; 
-
 
   console.log('Routes:', state.routes.map(route => route.name));
 
@@ -28,7 +27,11 @@ const TabBar = ({ state, descriptors, navigation }) => {
   };
 
   return (
-    <View style={styles.tabbar}>
+    <ImageBackground 
+      source={require('../assets/tabBG.png')} // add the background image here
+      style={styles.tabbar} // apply styles to the tabbar container
+      imageStyle={{ borderTopRightRadius: 40, borderTopLeftRadius: 40 }} // ensure the image follows the rounded corners
+    >
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
         const label =
@@ -72,21 +75,23 @@ const TabBar = ({ state, descriptors, navigation }) => {
             onPress={onPress}
             onLongPress={onLongPress}
           >
-            <View style={styles.iconContainer}>
-              {
-                icons[route.name] ? icons[route.name]({
-                  color: isFocused ? primaryColor : greyColor,
-                  isFocused: isFocused,
-                }) : null
-              }
-            </View>
+            <ImageBackground 
+              source={require('../assets/iconBG.png')} // require local image
+              style={styles.iconContainer} 
+              imageStyle={{ borderRadius: 500 }} // ensure the image has rounded corners
+            >
+              {icons[route.name] ? icons[route.name]({
+                color: isFocused ? primaryColor : greyColor,
+                isFocused: isFocused,
+              }) : null}
+            </ImageBackground>
             <Text style={{ color: isFocused ? primaryColor : greyColor }}>
               {label}
             </Text>
           </TouchableOpacity>
         );
       })}
-    </View>
+    </ImageBackground>
   );
 };
 
@@ -97,18 +102,15 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: "#4F75FF",
-    // marginHorizontal: 10,
-    // paddingVertical: 10,
+    backgroundColor: "transparent",
     borderTopRightRadius: 40,
     borderTopLeftRadius: 40,
-    // borderCurve: "continuous",
   },
   tabbarItem: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 20,
+    marginBottom: 10,
   },
   focusedTabbarItem: {
     marginBottom: 35,
@@ -116,15 +118,21 @@ const styles = StyleSheet.create({
   iconContainer: {
     width: 70,
     height: 70,
-    backgroundColor: "lightblue", 
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 500, 
-    shadowColor: '#171717',
-    shadowOffset: {width: -2, height: 4},
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
-  },
+    borderRadius: 500,
+    shadowColor: "#000",  // Shadow color remains black
+    shadowOpacity: 0.8,   // Increases the opacity for a darker shadow
+    shadowRadius: 10,     // Increases the radius to make the shadow more pronounced
+    shadowOffset: { width: 0, height: 5 },  // Adds a slight offset for depth
+    elevation: 3,
+    overflow: 'hidden', // Add this line
+}
+
+
+
+
+
 });
 
 export default TabBar;

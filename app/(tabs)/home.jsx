@@ -1,6 +1,6 @@
-import { View, Text, ScrollView, TextInput, StyleSheet, FlatList, Image } from 'react-native';
+import { ImageBackground, View, Text, ScrollView, TextInput, StyleSheet, FlatList, Image } from 'react-native';
 import React, { useState } from 'react';
-import { ImageBackground } from 'react-native-web';
+// import { ImageBackground } from 'react-native-web';
 
 const Home = () => {
   const [search, setSearch] = useState(''); // State to hold the search query
@@ -48,6 +48,9 @@ const Home = () => {
   const filterMovies = (movies) => {
     return movies.filter(movie => movie.title.toLowerCase().includes(search.toLowerCase()));
   };
+  const filterMoviesONgenre = (movies) => {
+    return movies.filter(movie => movie.genre.toLowerCase().includes(search.toLowerCase()));
+  };
 
   const renderMovieItem = ({ item }) => (
     <View style={styles.movieCard}>
@@ -73,7 +76,7 @@ const Home = () => {
             <Text style={styles.sectionTitle}>Now Playing</Text>
             <FlatList
               horizontal
-              data={filterMovies(nowPlayingMovies)} // Filtered movies
+              data={filterMovies(nowPlayingMovies) && filterMoviesONgenre(nowPlayingMovies)} // Filtered movies
               renderItem={renderMovieItem}
               keyExtractor={(item) => item.id}
               showsHorizontalScrollIndicator={false}
@@ -85,7 +88,7 @@ const Home = () => {
             <Text style={styles.sectionTitle}>Coming Soon</Text>
             <FlatList
               horizontal
-              data={filterMovies(comingSoon)} // Filtered movies
+              data={filterMovies(comingSoon) && filterMoviesONgenre(comingSoon)} // Filtered movies
               renderItem={renderMovieItem}
               keyExtractor={(item) => item.id}
               showsHorizontalScrollIndicator={false}
@@ -97,7 +100,7 @@ const Home = () => {
             <Text style={styles.sectionTitle}>Top Movies</Text>
             <FlatList
               horizontal
-              data={filterMovies(topMovies)} // Filtered movies
+              data={filterMovies(topMovies) && filterMoviesONgenre(topMovies) } // Filtered movies
               renderItem={renderMovieItem}
               keyExtractor={(item) => item.id}
               showsHorizontalScrollIndicator={false}
@@ -109,7 +112,7 @@ const Home = () => {
             <Text style={styles.sectionTitle}>Trending</Text>
             <FlatList
               horizontal
-              data={filterMovies(trending)} // Filtered movies
+              data={filterMovies(trending)&& filterMoviesONgenre(trending) } // Filtered movies
               renderItem={renderMovieItem}
               keyExtractor={(item) => item.id}
               showsHorizontalScrollIndicator={false}
@@ -121,7 +124,7 @@ const Home = () => {
             <Text style={styles.sectionTitle}>New Movies</Text>
             <FlatList
               horizontal
-              data={filterMovies(newMovie)} // Filtered movies
+              data={filterMovies(newMovie) && filterMoviesONgenre(newMovie)  } // Filtered movies
               renderItem={renderMovieItem}
               keyExtractor={(item) => item.id}
               showsHorizontalScrollIndicator={false}
@@ -153,6 +156,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: 'bold',
     marginBottom: 10,
+    color: "#fff",
   },
   movieCard: {
     width: 100,
