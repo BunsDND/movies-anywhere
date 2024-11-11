@@ -1,6 +1,8 @@
 import { ImageBackground, View, Text, ScrollView, TextInput, StyleSheet, FlatList, Image } from 'react-native';
 import React, { useState } from 'react';
-// import { ImageBackground } from 'react-native-web';
+import {Tabs,Stack, Redirect} from 'expo-router'
+import { TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const Home = () => {
   const [search, setSearch] = useState(''); // State to hold the search query
@@ -46,10 +48,10 @@ const Home = () => {
   ];
   // Function to filter movies based on search
   const filterMovies = (movies) => {
-    return movies.filter(movie => movie.title.toLowerCase().includes(search.toLowerCase()));
-  };
-  const filterMoviesONgenre = (movies) => {
-    return movies.filter(movie => movie.genre.toLowerCase().includes(search.toLowerCase()));
+    return movies.filter(movie => 
+      movie.title.toLowerCase().includes(search.toLowerCase()) ||
+      movie.genre.toLowerCase().includes(search.toLowerCase())
+    );
   };
 
   const renderMovieItem = ({ item }) => (
@@ -61,82 +63,135 @@ const Home = () => {
   );
 
   return (
+    
     <ImageBackground source={require('../../assets/bg.png')} style={styles.background}>
       <ScrollView>
-        <View style={styles.container}>
-          <TextInput
-            style={styles.searchBar}
-            placeholder="Search..."
-            value={search}
-            onChangeText={setSearch} // Set the search state as the user types
-          />
-          
-          {/* Now Playing Section */}
-          <View> 
-            <Text style={styles.sectionTitle}>Now Playing</Text>
-            <FlatList
-              horizontal
-              data={filterMovies(nowPlayingMovies) && filterMoviesONgenre(nowPlayingMovies)} // Filtered movies
-              renderItem={renderMovieItem}
-              keyExtractor={(item) => item.id}
-              showsHorizontalScrollIndicator={false}
-            />
-          </View>
+        <View style={styles.headerContainer}> 
+        <Image source={require('../../assets/logo.png')} style={styles.logobabaw }/>
 
-          {/* Comming Soon Section */}
-          <View> 
-            <Text style={styles.sectionTitle}>Coming Soon</Text>
-            <FlatList
-              horizontal
-              data={filterMovies(comingSoon) && filterMoviesONgenre(comingSoon)} // Filtered movies
-              renderItem={renderMovieItem}
-              keyExtractor={(item) => item.id}
-              showsHorizontalScrollIndicator={false}
-            />
-          </View>
-
-          {/* Top Movies Section */}
-          <View> 
-            <Text style={styles.sectionTitle}>Top Movies</Text>
-            <FlatList
-              horizontal
-              data={filterMovies(topMovies) && filterMoviesONgenre(topMovies) } // Filtered movies
-              renderItem={renderMovieItem}
-              keyExtractor={(item) => item.id}
-              showsHorizontalScrollIndicator={false}
-            />
-          </View>
-
-          {/* Trending Section */}
-          <View> 
-            <Text style={styles.sectionTitle}>Trending</Text>
-            <FlatList
-              horizontal
-              data={filterMovies(trending)&& filterMoviesONgenre(trending) } // Filtered movies
-              renderItem={renderMovieItem}
-              keyExtractor={(item) => item.id}
-              showsHorizontalScrollIndicator={false}
-            />
-          </View>
-
-          {/* New Movies Section */}
-          <View> 
-            <Text style={styles.sectionTitle}>New Movies</Text>
-            <FlatList
-              horizontal
-              data={filterMovies(newMovie) && filterMoviesONgenre(newMovie)  } // Filtered movies
-              renderItem={renderMovieItem}
-              keyExtractor={(item) => item.id}
-              showsHorizontalScrollIndicator={false}
-            />
-          </View>
+      <Text style={styles.tabTitle}>Movies</Text>
         </View>
+
+
+        <View style={styles.container}>
+  <TextInput
+    style={styles.searchBar}
+    placeholder="Search..."
+    value={search}
+    onChangeText={setSearch} // Set the search state as the user types
+  />
+  
+  {/* Now Playing Section */}
+  <View> 
+          <Text style={styles.sectionTitle}>Now Playing</Text>
+          <FlatList
+            horizontal
+            data={filterMovies(nowPlayingMovies)} // Filtered movies based on combined search
+            renderItem={({ item }) => (
+              <TouchableOpacity onPress={() => navigation.navigate('/TESTING')}>
+                {renderMovieItem({ item })}
+              </TouchableOpacity>
+            )}
+            keyExtractor={(item) => item.id.toString()}
+            showsHorizontalScrollIndicator={false}
+          />
+        </View>
+
+  {/* Coming Soon Section */}
+  <View> 
+    <Text style={styles.sectionTitle}>Coming Soon</Text>
+    <FlatList
+      horizontal
+      data={filterMovies(comingSoon)} // Filtered movies
+      renderItem={({ item }) => (
+        <TouchableOpacity onPress={() => navigation.navigate('/TESTING')}>
+          {renderMovieItem({ item })}
+        </TouchableOpacity>
+      )}
+      keyExtractor={(item) => item.id}
+      showsHorizontalScrollIndicator={false}
+    />
+  </View>
+
+  {/* Top Movies Section */}
+  <View> 
+    <Text style={styles.sectionTitle}>Top Movies</Text>
+    <FlatList
+      horizontal
+      data={filterMovies(topMovies)} // Filtered movies
+      renderItem={({ item }) => (
+        <TouchableOpacity onPress={() => navigation.navigate('/TESTING')}>
+          {renderMovieItem({ item })}
+        </TouchableOpacity>
+      )}
+      keyExtractor={(item) => item.id}
+      showsHorizontalScrollIndicator={false}
+    />
+  </View>
+
+  {/* Trending Section */}
+  <View> 
+    <Text style={styles.sectionTitle}>Trending</Text>
+    <FlatList
+      horizontal
+      data={filterMovies(trending)} // Filtered movies
+      renderItem={({ item }) => (
+        <TouchableOpacity onPress={() => navigation.navigate('/TESTING')}>
+          {renderMovieItem({ item })}
+        </TouchableOpacity>
+      )}
+      keyExtractor={(item) => item.id}
+      showsHorizontalScrollIndicator={false}
+    />
+  </View>
+
+  {/* New Movies Section */}
+  <View> 
+    <Text style={styles.sectionTitle}>New Movies</Text>
+    <FlatList
+      horizontal
+      data={filterMovies(newMovie)} // Filtered movies
+      renderItem={({ item }) => (
+        <TouchableOpacity onPress={() => navigation.navigate('/TESTING')}>
+          {renderMovieItem({ item })}
+        </TouchableOpacity>
+      )}
+      keyExtractor={(item) => item.id}
+      showsHorizontalScrollIndicator={false}
+    />
+  </View>
+</View>
       </ScrollView>
     </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
+  headerContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop:10,
+    marginLeft:10,
+    marginriGHT:10,
+  },
+  logobabaw: {
+    width: 40, 
+    height: 40,
+    borderRadius: 10,
+    position: 'absolute',
+    left: 0, // Positions the logo on the right side of the container
+  },
+  tabTitle: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    color: '#1C3269',
+    textShadowColor: 'rgba(0, 0, 0, 0.55)',
+    textShadowOffset: { width: -1, height: 1 },
+    textShadowRadius: 5,
+    flex: 1, // Ensures the text takes up available space
+    textAlign: 'center',
+  },
   background: {
     flex: 1,
     resizeMode: 'cover',
@@ -156,8 +211,11 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: 'bold',
     marginBottom: 10,
-    color: "#fff",
-  },
+    color: '#fff',
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
+    textShadowOffset: { width: -1, height: 1 },
+    textShadowRadius: 5,
+  }, 
   movieCard: {
     width: 100,
     marginRight: 10,

@@ -1,6 +1,6 @@
 import { View,StyleSheet, Image } from 'react-native'
 import React from 'react'
-import {Tabs, Redirect} from 'expo-router'
+import {Tabs,Stack, Redirect} from 'expo-router'
 import {icons} from '../../constants'
 import TabBar from '../../components/TabBar'
 
@@ -20,81 +20,24 @@ import TabBar from '../../components/TabBar'
 
 const TabLayout = () => {
   return (
+    
     <>
-    <Tabs 
+    
+    <Tabs tabBar={props=> <TabBar {...props} />} > 
 
-    tabBar={props=> <TabBar {...props} />}
-    > 
+    <Tabs.Screen name='home' options={{ headerShown:false, title: '',  }} />
 
-      <Tabs.Screen
-        name='home'
-        options={{
-          headerShown:false,
-          title: '',
-          // headerShown:false,
-          // tabBarIcon:({color,focused})=>(
-          //     <TabIcon
-          //     icon={icons.home}
-          //     color={color}
-          //     name='Home'
-          //     focused={focused}           
-          //     /> 
-          // )
-        }}
-      />
+      <Tabs.Screen name='location' options={{ title: '', headerShown:false, }} />
 
-      <Tabs.Screen
-        name='location'
-        options={{
-          title: '',
-          headerShown:false,
-          // tabBarIcon:({color,focused})=>(
-          //     <TabIcon
-          //     icon={icons.location}
-          //     color={color}
-          //     name='Location'
-          //     focused={focused}           
-          //     /> 
-          // )
-        }}
-      />
+      <Tabs.Screen name='ticket' options={{ title: '', headerShown:false, }} />
 
-      <Tabs.Screen
-        name='ticket'
-        options={{
-          title: '',
-          headerShown:false,
-          // tabBarIcon:({color,focused})=>(
-          //     <TabIcon
-          //     icon =  {icons.ticket}
-          //     color = {color}
-          //     name = 'Ticket'
-          //     focused  = {focused}           
-          //     /> 
-          // )
-        }}
-      />
-
-      <Tabs.Screen
-        name='profile'
-        options={{
-          title: '',
-          headerShown:false,
-          // tabBarIcon:({color,focused})=>(
-          //     <TabIcon
-          //     icon =  {icons.profile}
-          //     color = {color}
-          //     name = 'Profile'
-          //     focused  = {focused}           
-          //     /> 
-          // )
-        }}
-      />  
+      <Tabs.Screen name='profile' options={{ title: '', headerShown:false, }} />  
 
 
     </Tabs>
-    
-    </>
+   
+    </> 
+
   )
 }
 const styles = StyleSheet.create({
