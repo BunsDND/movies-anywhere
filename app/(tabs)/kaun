@@ -3,8 +3,8 @@
 // import { ImageBackground } from 'react-native-web';
 
 // const Home = () => {
-//   const [search, setSearch] = useState(''); // State to hold the search query
-
+//   const [search, seasdasasdasdasdtSearch] = useState(''); // State to hold the search query
+asdasdasd
 //   // Movie data
 //   const nowPlayingMovies = [
 //     { id: '1', title: 'Inside Out 2', image: 'https://resizing.flixster.com/8yCWg9MRcT7LnnuHtqe1ACAyDHQ=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzZmZDY4MmFmLTE2ZGYtNDY1NS1iZmY5LWZmYjVjZjBkNTk3OC5qcGc=', genre: 'Animation' },
