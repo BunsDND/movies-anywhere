@@ -32,7 +32,7 @@ This project demonstrates the application of modern development principles for a
 <img src="assets\profile.jpg"> 
 
 # Tab Icons
-<img scr="assets\tabs.jpg">
+<img scr="assets\tabs.png">
 
 # Demo/ Onboarding Screen
 [Demo Screen for Movies Anywhere](https://drive.google.com/file/d/16ZBgIMRexRvVb8neBpksfz8R-K2XcRaM/view?usp=sharing)
