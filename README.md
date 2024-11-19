@@ -35,5 +35,5 @@ This project demonstrates the application of modern development principles for a
 <img src="assets\tabs.png"> 
 
 # Demo/ Onboarding Screen
-[Demo Screen for Movies Anywhere]([https://drive.google.com/file/d/16ZBgIMRexRvVb8neBpksfz8R-K2XcRaM/view?usp=sharing](https://youtu.be/bX8YAXRD21I))
+[Demo Screen for Movies Anywhere](https://youtu.be/bX8YAXRD21I)
 
